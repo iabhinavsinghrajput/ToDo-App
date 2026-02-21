@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reset Password</title>
+  <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+  <div class="container auth">
+    <h1>Reset Password</h1>
+
+    <form id="resetForm">
+      <label>New Password</label>
+      <input type="password" id="newPassword" required placeholder="Enter new password">
+
+      <button type="submit" class="btn">Update Password</button>
+    </form>
+
+    <p id="message"></p>
+  </div>
+
+  <script>
+  const resetForm = document.getElementById('resetForm');
+
+  // Get token from URL: e.g. reset.html?token=12345
+  const urlParams = new URLSearchParams(window.location.search);
+  const token = urlParams.get('token');
+
+  resetForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const password = document.getElementById('newPassword').value;
+
+    // ✅ Use backticks for template literal
+    const res = await fetch(`http://localhost:5000/api/auth/reset-password/${token}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password })
+    });
+
+    const data = await res.json();
+    const message = document.getElementById('message');
+
+    if (res.ok) {
+      message.style.color = 'green';
+      message.innerText = "Password updated successfully! You can now login.";
+      setTimeout(() => window.location.href = 'login.html', 2000);
+    } else {
+      message.style.color = 'red';
+      message.innerText = data.message;
+    }
+  });
+</script>
+</body>
+</html>

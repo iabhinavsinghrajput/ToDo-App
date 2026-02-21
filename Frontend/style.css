@@ -1,0 +1,188 @@
+/* Base */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #113043;
+  margin: 0;
+  padding: 0;
+}
+
+/* Container */
+.container {
+  max-width: 1100px;        /* prevents too wide on large screens */
+  width: 95%;               /* adapts to mobile */
+  margin: 20px auto;
+  padding: 20px;
+  background: hsl(207, 31%, 58%);
+  border-radius: 15px;
+  border: 1px solid hsl(207, 28%, 45%);
+}
+
+/* Heading */
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 8px 16px;
+  margin-bottom: 15px;
+  background: #58a4e3;
+  border: 1px solid #000;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #000;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow-x: auto;
+}
+
+th, td {
+  border: 1px solid #645f5f;
+  padding: 10px;
+  text-align: left;
+  font-size: 17px;
+}
+
+th {
+  background: #c7def1;
+}
+
+/* Inputs */
+input {
+  width: 95%;
+  padding: 10px;
+  margin: 6px 0 15px 0;
+  font-size: 15px;
+  border-radius: 5px;
+}
+
+/* Labels */
+label {
+  font-size: 16px;
+}
+
+/* 📱 Mobile Responsive */
+@media (max-width: 768px) {
+
+  /* Stack table as cards */
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+  thead {
+    display: table-header-group;
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+  }
+}
+
+  tr {
+    background: #e3eff9;
+    margin-bottom: 15px;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #645f5f;
+  }
+
+  td {
+    border: none;
+    padding: 6px 0;
+  }
+
+  td::before {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  td:nth-child(1)::before { content: "Title"; }
+  td:nth-child(2)::before { content: "Description"; }
+  td:nth-child(3)::before { content: "Created at"; }
+  td:nth-child(4)::before { content: "Updated at"; }
+  td:nth-child(5)::before { content: "Action"; }
+
+  .btn {
+    font-size: 15px;
+    padding: 6px 12px;
+  }
+}
+/* -------------------- */
+/* Message Styling */
+/* -------------------- */
+#message {
+  font-weight: bold;
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+}
+
+#message.green {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+#message.red {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+/* -------------------- */
+/* Table Buttons Styling */
+/* -------------------- */
+.editBtn {
+  background-color: #ffc107; /* amber */
+  color: #000;
+  margin-right: 5px;
+}
+
+.deleteBtn {
+  background-color: #dc3545; /* red */
+  color: #fff;
+}
+
+.saveBtn {
+  background-color: #28a745; /* green */
+  color: #fff;
+  margin-right: 5px;
+}
+
+.cancelBtn {
+  background-color: #6c757d; /* gray */
+  color: #fff;
+}
+
+/* Hover effects for buttons */
+.btn:hover,
+.editBtn:hover,
+.deleteBtn:hover,
+.saveBtn:hover,
+.cancelBtn:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+  transition: 0.2s;
+}
+/* Inputs inside table cells for editing */
+table td input {
+  width: 90%;           /* don’t touch table cell borders */
+  padding: 5px;         /* smaller padding to fit nicely */
+  box-sizing: border-box; /* include padding in width */
+  border-radius: 5px;
+  font-size: 14px;
+}

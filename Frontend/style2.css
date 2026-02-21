@@ -1,0 +1,110 @@
+.auth {
+  max-width: 400px;
+}
+
+.auth p {
+  text-align: center;
+  margin-top: 10px;
+}
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Body Background (Same as Dashboard) */
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #123b4a; /* Dark blue background */
+}
+
+/* Auth Container */
+.container.auth {
+    background-color: #7f9db9; /* Soft blue like dashboard card */
+    padding: 40px;
+    width: 400px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+/* Heading */
+.container.auth h1 {
+    margin-bottom: 25px;
+    color: #000;
+}
+
+/* Labels */
+.container.auth label {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* Inputs */
+.container.auth input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 18px;
+    border-radius: 6px;
+    border: 1px solid #555;
+    outline: none;
+    font-size: 14px;
+}
+
+/* Input Focus Effect */
+.container.auth input:focus {
+    border-color: #1b6ca8;
+    box-shadow: 0 0 5px rgba(27, 108, 168, 0.5);
+}
+
+/* Button */
+.btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #5aa2d6;
+    border: 1px solid #1c3d5a;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+/* Button Hover */
+.btn:hover {
+    background-color: #3f8cc3;
+}
+
+/* Bottom Text */
+.container.auth p {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+/* Links */
+.container.auth a {
+    color: #0b2f44;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.container.auth a:hover {
+    text-decoration: underline;
+}
+#message {
+  margin-top: 15px;
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+#message.green {
+  color: #2ecc71;
+}
+#message.red {
+  color: #9a1506;
+}

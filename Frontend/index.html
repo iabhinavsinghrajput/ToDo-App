@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo List</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>Todo List</h1>
+
+    <!-- Add Task Form -->
+    <form id="todoForm" style="margin-bottom: 20px;">
+      <input type="text" id="title" placeholder="Title" required>
+      <input type="text" id="description" placeholder="Description" required>
+      <button type="submit" class="btn">Add Task</button>
+    </form>
+
+    <!-- Message div -->
+    <div id="message" style="margin-bottom: 10px;"></div>
+
+    <!-- Todo Table -->
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Created at</th>
+          <th>Updated at</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="todoTable"></tbody>
+    </table>
+
+    <button id="logoutBtn" class="btn" style="margin-top: 10px;">Logout</button>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="logout.js"></script>
+</body>
+</html>

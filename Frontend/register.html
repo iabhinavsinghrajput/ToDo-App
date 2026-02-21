@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <link rel="stylesheet" href="style2.css">
+  <style>
+    /* Optional: inline styling for message */
+    #message {
+      margin-top: 10px;
+      font-weight: bold;
+      font-size: 0.95rem;
+    }
+    #message.green { color: #2ecc71; } /* success */
+    #message.red { color: #e74c3c; }   /* error */
+  </style>
+</head>
+<body>
+<div class="container auth">
+  <h1>Register</h1>
+
+  <form id="registerForm">
+    <label>Email</label>
+    <input type="email" id="regEmail" required>
+    <label>Password</label>
+    <input type="password" id="regPassword" required>
+    <button type="submit" class="btn">Register</button>
+  </form>
+
+  <!-- Message container -->
+  <p id="message"></p>
+
+  <p>Already have an account? <a href="login.html">Login</a></p>
+</div>
+
+<script>
+const registerForm = document.getElementById("registerForm");
+const message = document.getElementById("message"); // grab message container
+
+registerForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const email = document.getElementById("regEmail").value;
+  const password = document.getElementById("regPassword").value;
+
+  const res = await fetch("http://localhost:5000/api/auth/register", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, password })
+  });
+
+  const data = await res.json();
+
+  if (res.ok) {
+    // save email for OTP verification
+    localStorage.setItem("pendingEmail", email);
+
+    message.className = "green"; // success style
+    message.innerText = "OTP sent to your email. Please verify.";
+
+    // redirect after 2 seconds
+    setTimeout(() => window.location.href = "otp.html", 2000);
+  } else {
+    message.className = "red"; // error style
+    message.innerText = data.message || "Registration failed";
+  }
+});
+</script>
+</body>
+</html>

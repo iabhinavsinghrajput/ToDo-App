@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verify OTP</title>
+  <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+<div class="container auth">
+  <h1>Verify Your Email</h1>
+
+  <form id="otpForm">
+    <input type="email" id="otpEmail" hidden>
+    <label>OTP</label>
+    <input type="text" id="otpCode" required placeholder="Enter OTP from email">
+    <button type="submit" class="btn">Verify OTP</button>
+  </form>
+
+  <p id="message"></p>
+</div>
+
+<script>
+const otpForm = document.getElementById('otpForm');
+document.getElementById('otpEmail').value = localStorage.getItem('pendingEmail') || '';
+
+otpForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const email = document.getElementById('otpEmail').value;
+  const otp = document.getElementById('otpCode').value;
+
+  const res = await fetch('http://localhost:5000/api/auth/verify-otp', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email, otp })
+  });
+
+  const data = await res.json();
+  const message = document.getElementById('message');
+
+  if (res.ok) {
+    message.style.color = 'green';
+    message.innerText = data.message + " Redirecting to login...";
+    localStorage.removeItem('pendingEmail');
+    setTimeout(() => window.location.href = 'login.html', 2000);
+  } else {
+    message.style.color = 'red';
+    message.innerText = data.message;
+  }
+});
+</script>
+</body>
+</html>
