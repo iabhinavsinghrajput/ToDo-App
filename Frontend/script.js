@@ -11,7 +11,7 @@ async function loadTodos() {
   const table = document.getElementById("todoTable");
   if (!table) return;
 
-  const res = await fetch(`${BASE_URL}/api/todos`, {
+  const res = await fetch("http://localhost:5000/api/todos", {
     headers: { Authorization: token }
   });
 
@@ -71,7 +71,7 @@ if (form) {
     const title = document.getElementById("title").value;
     const description = document.getElementById("description").value;
 
-    const res = await fetch(`${BASE_URL}/api/todos`, {
+    const res = await fetch("http://localhost:5000/api/todos", {
       method: "POST",
       headers: { "Content-Type": "application/json", Authorization: token },
       body: JSON.stringify({ title, description })
@@ -91,7 +91,7 @@ if (form) {
 // Delete todo
 // --------------------
 async function deleteTodo(id) {
-  const res = await fetch(`${BASE_URL}/api/todos/${id}`, {
+  const res = await fetch(`http://localhost:5000/api/todos/${id}`, {
     method: "DELETE",
     headers: { Authorization: token }
   });
@@ -130,7 +130,7 @@ function editTodoInline(tr) {
 
     if (!newTitle || !newDesc) return;
 
-    const res = await fetch(`${BASE_URL}/api/todos/${tr.dataset.id}`, {
+    const res = await fetch(`http://localhost:5000/api/todos/${tr.dataset.id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json", Authorization: token },
       body: JSON.stringify({ title: newTitle, description: newDesc })

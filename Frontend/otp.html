@@ -19,7 +19,7 @@
 
   <p id="message"></p>
 </div>
-<script src="config.js"></script>
+
 <script>
 const otpForm = document.getElementById('otpForm');
 document.getElementById('otpEmail').value = localStorage.getItem('pendingEmail') || '';
@@ -30,7 +30,7 @@ otpForm.addEventListener('submit', async (e) => {
   const email = document.getElementById('otpEmail').value;
   const otp = document.getElementById('otpCode').value;
 
-  const res = await fetch(`${BASE_URL}/api/auth/verify-otp`, {
+  const res = await fetch('http://localhost:5000/api/auth/verify-otp', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email, otp })
