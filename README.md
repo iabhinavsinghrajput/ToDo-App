@@ -30,22 +30,25 @@ A full-stack Todo application with authentication built using Node.js, Express, 
 ---
 
 ## 📂 Project Structure
+
+```
 ToDo-App/
 ├── Backend/
-│ ├── models/
-│ ├── routes/
-│ ├── middleware/
-│ ├── server.js
-│ └── package.json
+│   ├── models/
+│   ├── routes/
+│   ├── middleware/
+│   ├── server.js
+│   └── package.json
 │
 ├── Frontend/
-│ ├── index.html
-│ ├── login.html
-│ ├── register.html
-│ ├── script.js
-│ └── style.css
+│   ├── index.html
+│   ├── login.html
+│   ├── register.html
+│   ├── script.js
+│   └── style.css
 │
 └── .gitignore
+```
 
 ---
 ## 📌 API Features
